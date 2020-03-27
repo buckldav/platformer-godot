@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Level1.gd" type="Script" id=1]
+[ext_resource path="res://Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Death.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://LevelDoor.tscn" type="PackedScene" id=6]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Character" parent="." instance=ExtResource( 2 )]
+position = Vector2( 900, 360 )
+
+[node name="TileMap" parent="." instance=ExtResource( 3 )]
+tile_data = PoolIntArray( 327692, 32, 0, 327693, 33, 0, 327694, 33, 0, 327695, 38, 0, 524288, 59, 0, 524289, 59, 0, 524290, 59, 0, 524291, 59, 0, 524292, 59, 0, 524293, 59, 0, 524294, 59, 0, 524309, 59, 0, 524310, 59, 0, 524311, 59, 0, 524312, 59, 0, 524313, 59, 0, 524314, 59, 0, 524315, 59, 0, 524316, 59, 0, 524317, 59, 0, 524318, 59, 0, 720933, 26, 0, 786468, 57, 0, 1048604, 41, 0, 1048606, 46, 0, 1048607, 46, 0, 1048608, 46, 0, 1048609, 46, 0, 1048610, 43, 0, 1179676, 47, 0, 1179678, 46, 0, 1179679, 46, 0, 1179680, 46, 0, 1179681, 46, 0, 1179682, 48, 0, 1310735, 59, 0, 1310736, 59, 0, 1310737, 59, 0, 1310738, 59, 0, 1310739, 59, 0, 1310740, 59, 0, 1310741, 59, 0, 1376263, 59, 0, 1376264, 59, 0, 1376265, 59, 0, 1376266, 59, 0, 1376267, 59, 0, 1376268, 59, 0, 1376269, 59, 0, 1376270, 59, 0, 1376278, 59, 0, 1376279, 59, 0, 1376280, 59, 0, 1638400, 58, 0, 1835008, 59, 0, 1835009, 59, 0, 1835010, 59, 0, 1835011, 59, 0, 1835012, 59, 0, 1835013, 59, 0, 1835014, 59, 0, 1835015, 59, 0, 1835016, 59, 0, 1835017, 59, 0, 1835018, 59, 0, 1835019, 59, 0, 1835020, 59, 0, 1835021, 59, 0, 1835022, 59, 0, 1835023, 59, 0, 1835024, 59, 0, 1835025, 59, 0, 1835026, 59, 0, 1835027, 59, 0, 1835028, 59, 0, 1835029, 59, 0, 1835030, 59, 0, 1835031, 59, 0, 1835032, 59, 0, 1835033, 59, 0, 1835034, 59, 0, 1835035, 59, 0, 1835052, 59, 0, 1835053, 59, 0, 1835054, 59, 0, 1835055, 59, 0, 1835056, 59, 0, 1835057, 59, 0, 1835058, 59, 0, 1835059, 59, 0, 1835060, 59, 0, 1835061, 59, 0, 1835062, 59, 0, 1835063, 59, 0, 1835064, 59, 0, 1835065, 59, 0, 1835066, 59, 0 )
+
+[node name="Death" parent="." instance=ExtResource( 4 )]
+
+[node name="Collectibles" type="Node2D" parent="."]
+
+[node name="Coin" parent="Collectibles" instance=ExtResource( 5 )]
+position = Vector2( 772.299, 411.08 )
+
+[node name="LevelDoor" parent="." instance=ExtResource( 6 )]
+position = Vector2( 36.5651, 110.803 )
+[connection signal="body_entered" from="Death" to="Character" method="_on_Death_body_entered"]
+[connection signal="body_entered" from="Collectibles/Coin" to="." method="_on_Coin_body_entered"]
